@@ -1,17 +1,57 @@
+
+<?php include "db.php"; ?>
+
 <?php 
 
-if (isset($_POST['submit'])) {
+function registerUser () {
+
+
+  if (isset($_POST['register'])) {
 
      $username = $_POST['username'];
      $email = $_POST['email'];
      $password = $_POST['password'];
 
-//    test reasons
-echo  $username;
+    
+     $query = "INSERT INTO users(username, user_password, user_email, creation_date) VALUES('{$username}', '{$password}', '{$email}', now() ) ";
+
+     $create_users_query = mysqli_query($dbConnection, $query);
+
+     if(!$create_users_query) {
+
+        die('N-a mers!' . mysqli_error($dbConnection));
+     }  
+     
+     else {
+
+        echo "cevaaaa";
+
+        ?>
+
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+  <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="..." class="rounded me-2" alt="...">
+      <strong class="me-auto">SubmitIT!</strong>
+      <small>Account created just now!</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Hello, your account named <? $username ?> has been successfully created!
+     </div>
+  </div>
+</div>
+
+<?php
+
+     }
+    
+
+     }
 
 }
 
-
+registerUser();
 
 
 ?>
@@ -33,17 +73,14 @@ echo  $username;
     <div class="container-sm p-2">
         <!-- -------------------------------FORM----------------------- -->
         <form action="login.php" method="POST">
+
+        <!-- username -->
                         <div class="mb-3">
                     <label for="Username" class="form-label">Username</label>
             <input type="text" class="form-control" placeholder="your Username" aria-label="Username" aria-describedby="basic-addon1" name="username">
             </div>
-            <!-- ---------------------------------------------------------- -->
-                <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder='example: sara@gmail.com' name="email">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-  </div>
-  <!------------------------------------------------------------------------- -->
+           
+  <!---------------------------------------password---------------------------------- -->
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Password</label>
     <input type="password" class="form-control" id="exampleInputPassword1" name="password">
@@ -68,6 +105,7 @@ echo  $username;
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+        <form action="" method="POST">
           <div class="mb-3">
                     <label for="Username" class="form-label">Username</label>
             <input type="text" class="form-control" placeholder="your Username" aria-label="Username" aria-describedby="basic-addon1" name="username">
@@ -86,7 +124,8 @@ echo  $username;
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Create an account!</button>
+        <button type="submit" class="btn btn-primary" name="register">Create an account!</button>
+        </form>
       </div>
     </div>
   </div>
