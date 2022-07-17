@@ -1,4 +1,3 @@
-
 <?php include "db.php"; ?>
 
 <?php 
@@ -24,28 +23,27 @@ function registerUser () {
         die('N-a mers!' . mysqli_error($dbConnection));
      }  
      
-     else {
+      
+    while($create_users_query) {
 
-        ?>
+      ?>
 
-        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+
+         <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
   <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
       <img src="..." class="rounded me-2" alt="...">
       <strong class="me-auto">SubmitIT!</strong>
       <small>Account created just now!</small>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close">Close this pop-up</button>
     </div>
     <div class="toast-body">
-      Hello, your account named <? $username ?> has been successfully created!
+      Hello, your account named <?php echo $username ?> has been successfully created!
      </div>
   </div>
 </div>
 
-<?php
-
-     }
-    
+     <?php   }  
 
      }
 
