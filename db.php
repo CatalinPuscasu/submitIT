@@ -1,6 +1,7 @@
 <?php  
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
- global $dbConnection;
+ 
  $dbConnection = mysqli_connect('localhost', 'root', '', 'submitit!');
 
 
