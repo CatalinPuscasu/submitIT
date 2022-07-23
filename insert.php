@@ -14,6 +14,8 @@ function registerUser () {
      $username = mysqli_real_escape_string($dbConnection, $username);
      $email = mysqli_real_escape_string($dbConnection, $email);
      $password = mysqli_real_escape_string($dbConnection, $password);
+
+     $password = password_hash($password, PASSWORD_BCRYPT, array('cost' => 10));
     
      $query = "INSERT INTO users(username, user_password, user_email, creation_date) VALUES('{$username}', '{$password}', '{$email}', now() ) ";
 
