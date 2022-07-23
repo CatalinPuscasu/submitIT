@@ -22,7 +22,8 @@ function registerUser () {
      }  
 
       else {
-        echo "<script type='text/javascript'>toastr.success('Your account has been successfully created!')</script>";
+        echo "<script type='text/javascript'>toastr.success('Your account has been successfully created! You may now login to the portal!')</script>";
+
       }
      
      
