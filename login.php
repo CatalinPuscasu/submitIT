@@ -1,6 +1,79 @@
 <?php include "db.php"; ?>
 
 
+<?php 
+
+
+
+if(isset($_POST['login'])) {
+
+    //  $username = $_POST['LoginUsername'];
+    //  $password = $_POST['passwordLogin'];
+     //am schimbat ca sa nu fie la fel 
+
+
+  //  read user data from DB
+
+  //  $query = "SELECT * FROM users WHERE username = '{$username}' AND user_password = '{$password}' ";
+   $query = "SELECT * FROM users";
+
+ $user_query = mysqli_query($dbConnection, $query);
+  
+ while ($row = mysqli_fetch_assoc($user_query)) {
+
+  $username = $row['username'];
+  $password = $row['user_password'];
+?>
+
+   <table>
+    <tr>
+    <th>Username</th>
+    <th>password</th>
+  </tr>
+      <tr>
+        <td><?php echo $username ?></td>
+  </tr>
+      <tr>
+        <td>
+          <?php echo $password ?>
+        </td>
+      </tr>
+    </table>
+
+<?php
+    }  
+
+  
+
+    // echo $db_username;
+    // echo $db_password;
+
+    $password = password_hash($password, PASSWORD_BCRYPT, array('cost' => 10));
+
+    if (mysqli_num_rows($user_query) > 0) {
+      echo "am gasit cv";
+
+    } else {
+      "nemaaaaaaaaa";
+    }
+
+  ?>
+   
+
+    // if($username == $db_username && $password == $db_password) {
+
+    //   session_start();
+    //   $_SESSION['UserSession'] = $username;
+
+    //   header("Location: ./index.php");
+    // } else {
+    <!-- //   // echo '<script>alert("something happended")</script>';  -->
+    //   // echo 'error';
+    // }
+
+<?php
+}   ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,21 +99,21 @@
     <h2 class="text-center p-3">Please login to the page to create the tickets</h2>
     <div class="container-sm p-2">
         <!-- -------------------------------FORM----------------------- -->
-        <form action="login.php" method="POST">
+        <form action="" method="POST">
 
         <!-- username -->
                         <div class="mb-3">
                     <label for="Username" class="form-label">Username</label>
-            <input type="text" class="form-control" placeholder="your Username" aria-label="Username" aria-describedby="basic-addon1" name="username" id="usernameLogin">
+            <input type="text" class="form-control" placeholder="your Username" aria-label="Username" aria-describedby="basic-addon1" name="LoginUsername" id="usernameLogin">
             </div>
            
   <!---------------------------------------password---------------------------------- -->
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="passwordLogin" name="password">
+    <input type="password" class="form-control" id="passwordLogin" name="passwordLogin">
   </div>
   <!-- ------------------------------------------------------------------------------------ -->
-  <button type="submit" class="btn btn-primary mb-5" name='submit'>Submit</button>
+  <button type="submit" class="btn btn-primary mb-5" name='login'>Login</button>
         </form>
 
         <!-- modal button---------------------------------------------------- -->
@@ -89,5 +162,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
    <!--       insert php for calling the toastr function -->
 <?php include "insert.php"; ?>
+
 </body>
 </html>
