@@ -39,6 +39,9 @@
       session_start();
       $_SESSION['username'] = $username;
 
+      echo "<script> location.href='index.php'; </script>";
+        exit;
+
 
 
     } else {
