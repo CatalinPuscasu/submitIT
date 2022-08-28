@@ -11,22 +11,51 @@
 
   global $dbConnection;
 
-  $stmt = $msqli->prepare("SELECT username, password FROM users WHERE username = ?");
-  $stmt->bind_param("ss", $username, $password);
+  $mysqli = new mysqli('localhost', 'root', '', 'submitit!');
+
+  $stmt = $mysqli->prepare("SELECT username, user_password FROM users WHERE username = ?");
+
+  if ($mysqli->connect_error) {
+  die("Connection failed: " . $mysqli->connect_error);
+}
+  $stmt->bind_param("s", $username);
 
   $stmt->execute();
   $stmt->store_result();
 
   $stmt->bind_result($uname, $pw);
 
-  }
 
-  
+  // to find users
+
+  if($stmt->num_rows == 1) {
+
+    echo "utilizator existent!";
+    $stmt->fetch();
+    if (password_verify($password, $pw)) {
+
+      echo "login OK";
+
+      session_start();
+      $_SESSION['username'] = $username;
 
 
 
+    } else {
+      $_SESSION = [];
+      session_destroy();
+    }
 
+  } else {
 
+    echo " nu e nimeni asa, boss";
+     
+  $_SESSION = [];
+      session_destroy();
+
+ } 
+
+}
 ?>
 
 
@@ -54,7 +83,7 @@
     <h2 class="text-center p-3">Please login to the page to create the tickets</h2>
     <div class="container-sm p-2">
         <!-- -------------------------------FORM----------------------- -->
-        <form action="index.php" method="POST">
+        <form action="" method="POST">
 
         <!-- username -->
                         <div class="mb-3">
