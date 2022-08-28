@@ -12,6 +12,12 @@
   global $dbConnection;
 
   $stmt = $msqli->prepare("SELECT username, password FROM users WHERE username = ?");
+  $stmt->bind_param("ss", $username, $password);
+
+  $stmt->execute();
+  $stmt->store_result();
+
+  $stmt->bind_result($uname, $pw);
 
   }
 
