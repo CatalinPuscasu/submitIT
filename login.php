@@ -4,75 +4,24 @@
 <?php 
 
 
-
-if(isset($_POST['login'])) {
-
-    //  $username = $_POST['LoginUsername'];
-    //  $password = $_POST['passwordLogin'];
-     //am schimbat ca sa nu fie la fel 
+  if(isset($_POST['submit'])) {
+    $username = $_POST['LoginUsername'];
+    $password = $_POST['passwordLogin'];
 
 
-  //  read user data from DB
+  global $dbConnection;
 
-  //  $query = "SELECT * FROM users WHERE username = '{$username}' AND user_password = '{$password}' ";
-   $query = "SELECT * FROM users";
+  $stmt = $msqli->prepare("SELECT username, password FROM users WHERE username = ?");
 
- $user_query = mysqli_query($dbConnection, $query);
+  }
+
   
- while ($row = mysqli_fetch_assoc($user_query)) {
 
-  $username = $row['username'];
-  $password = $row['user_password'];
+
+
+
+
 ?>
-
-   <table>
-    <tr>
-    <th>Username</th>
-    <th>password</th>
-  </tr>
-      <tr>
-        <td><?php echo $username ?></td>
-  </tr>
-      <tr>
-        <td>
-          <?php echo $password ?>
-        </td>
-      </tr>
-    </table>
-
-<?php
-    }  
-
-  
-
-    // echo $db_username;
-    // echo $db_password;
-
-    $password = password_hash($password, PASSWORD_BCRYPT, array('cost' => 10));
-
-    if (mysqli_num_rows($user_query) > 0) {
-      echo "am gasit cv";
-
-    } else {
-      "nemaaaaaaaaa";
-    }
-
-  ?>
-   
-
-    // if($username == $db_username && $password == $db_password) {
-
-    //   session_start();
-    //   $_SESSION['UserSession'] = $username;
-
-    //   header("Location: ./index.php");
-    // } else {
-    <!-- //   // echo '<script>alert("something happended")</script>';  -->
-    //   // echo 'error';
-    // }
-
-<?php
-}   ?>
 
 
 <!DOCTYPE html>
@@ -99,7 +48,7 @@ if(isset($_POST['login'])) {
     <h2 class="text-center p-3">Please login to the page to create the tickets</h2>
     <div class="container-sm p-2">
         <!-- -------------------------------FORM----------------------- -->
-        <form action="" method="POST">
+        <form action="index.php" method="POST">
 
         <!-- username -->
                         <div class="mb-3">
@@ -113,7 +62,7 @@ if(isset($_POST['login'])) {
     <input type="password" class="form-control" id="passwordLogin" name="passwordLogin">
   </div>
   <!-- ------------------------------------------------------------------------------------ -->
-  <button type="submit" class="btn btn-primary mb-5" name='login'>Login</button>
+  <button type="submit" class="btn btn-primary mb-5" name='submit'>Login</button>
         </form>
 
         <!-- modal button---------------------------------------------------- -->
