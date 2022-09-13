@@ -1,5 +1,6 @@
 <?php session_start(); ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +20,7 @@
       <div class="card-body bg-danger text-white">
         <h5 class="card-title">Submit an Incident!</h5>
         <p class="card-text">Access this section if you have an error in your app, or fi something doesn't work on your workstation.</p>
-        <a href="#" class="btn btn-primary">Submit the incident</a>
+        <a href="index.php?ticketType=incident" class="btn btn-primary">Submit the incident</a>
       </div>
     </div>
   </div>
@@ -28,7 +29,7 @@
       <div class="card-body bg-info text-white">
         <h5 class="card-title">Submit a request!</h5>
         <p class="card-text">Access this section to submit a request in order to obtain the access to an app, a licence, or hardware.</p>
-        <a href="#" class="btn btn-primary">Submit the request</a>
+        <a href="index.php?ticketType=request" class="btn btn-primary">Submit the request</a>
       </div>
     </div>
   </div>
