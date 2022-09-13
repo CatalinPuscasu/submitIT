@@ -13,15 +13,26 @@
     <h1 class="text-center">Welcome <?php echo $_SESSION['username']; ?></h1>
 
     <div class="container">
-        <div class="incident_container p-5">
-            <h2 class="p-4">
-                Submit an incident!
-            </h2>
-                  <form action="" method="POST">
-                       <!-- maybe a GET request -->
-                  </form>     
-        </div>
-        <div class="request_container"></div>
+        <div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body bg-danger text-white">
+        <h5 class="card-title">Submit an Incident!</h5>
+        <p class="card-text">Access this section if you have an error in your app, or fi something doesn't work on your workstation.</p>
+        <a href="#" class="btn btn-primary">Submit the incident</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body bg-info text-white">
+        <h5 class="card-title">Submit a request!</h5>
+        <p class="card-text">Access this section to submit a request in order to obtain the access to an app, a licence, or hardware.</p>
+        <a href="#" class="btn btn-primary">Submit the request</a>
+      </div>
+    </div>
+  </div>
+</div>
     </div>
 </body>
 </html>
