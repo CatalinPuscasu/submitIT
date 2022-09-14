@@ -1,6 +1,7 @@
 <?php session_start(); ?>
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +21,7 @@
       <div class="card-body bg-danger text-white">
         <h5 class="card-title">Submit an Incident!</h5>
         <p class="card-text">Access this section if you have an error in your app, or fi something doesn't work on your workstation.</p>
-        <a href="index.php?ticketType=incident" class="btn btn-primary">Submit the incident</a>
+        <a href="./incidentForm.php" class="btn btn-primary">Go the incident form</a>
       </div>
     </div>
   </div>
@@ -29,11 +30,14 @@
       <div class="card-body bg-info text-white">
         <h5 class="card-title">Submit a request!</h5>
         <p class="card-text">Access this section to submit a request in order to obtain the access to an app, a licence, or hardware.</p>
-        <a href="index.php?ticketType=request" class="btn btn-primary">Submit the request</a>
+        <a href="index.php?ticketType=<?php echo $request ?>" class="btn btn-primary">Submit the request</a>
       </div>
     </div>
   </div>
 </div>
     </div>
+    <!-- end of forms container -->
+
+    <button class="btn btn-warning">LOGOUT</button>
 </body>
 </html>
