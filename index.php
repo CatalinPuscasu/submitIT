@@ -1,6 +1,17 @@
 <?php session_start(); ?>
 
+<?php 
 
+  if (isset($_POST['logout'])) {
+    
+    session_destroy();
+
+          echo "<script> location.href='login.php'; </script>";
+
+
+  }
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +41,7 @@
       <div class="card-body bg-info text-white">
         <h5 class="card-title">Submit a request!</h5>
         <p class="card-text">Access this section to submit a request in order to obtain the access to an app, a licence, or hardware.</p>
-        <a href="index.php?ticketType=<?php echo $request ?>" class="btn btn-primary">Submit the request</a>
+        <a href="./requestForm.php" class="btn btn-primary">Submit the request</a>
       </div>
     </div>
   </div>
@@ -38,6 +49,10 @@
     </div>
     <!-- end of forms container -->
 
-    <button class="btn btn-warning">LOGOUT</button>
+    <!-- ----------LOGOUT---------- -->
+<form action="" method="POST">
+    <button class="btn btn-warning" name="logout">LOGOUT</button>
+    </form>
+    <!-- -------------------------------------------- -->
 </body>
 </html>
