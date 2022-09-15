@@ -24,6 +24,7 @@
 </div>
 
     </form>
-    
+        <a href="./index.php" class="btn btn-warning">Go back to the main page</a>
+      
 </body>
 </html>
