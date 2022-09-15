@@ -10,6 +10,13 @@
     <title>SubmitIT! Incident Form</title>
 </head>
 <body>
+   <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="index.php">Main page</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Incident Form</li>
+  </ol>
+</nav>
+
     <h1 class="text-center">Use this form to submit your incident!</h1>
         
     <form action="">
@@ -22,6 +29,21 @@
   <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
   <label for="floatingInput">Email address</label>
 </div>
+<div class="form-floating">
+  <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+    <option selected>Select the type of incident : </option>
+    <option value="app">Application</option>
+    <option value="hardware">Hardware</option>
+    <option value="network">Network</option>
+  </select>
+  <label for="floatingSelect">Incident type</label>
+</div>
+<div class="mb-3">
+  <label for="formFileMultiple" class="form-label">If you have attachments (emails, screenshots etc.) please insert them here</label>
+  <input class="form-control" type="file" id="formFileMultiple" multiple>
+</div>
+
+<button type="submit" class="btn btn-primary">Submit the incident</button>
 
     </form>
         <a href="./index.php" class="btn btn-warning">Go back to the main page</a>
