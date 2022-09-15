@@ -14,6 +14,7 @@
     <h1 class="text-center">Use this form to submit your request!</h1>
         
     <form action="">
+        <input class="form-control" type="text" value="Request Number : REQ<?php print rand(1, 1000000); ?>"  aria-label="readonly input example" readonly name="reqNumber">
         <div class="form-floating">
   <input type="text" class="form-control" id="Username" placeholder="Username" value="<?php echo $_SESSION['username']; ?>">
   <label for="Username">Username</label>
@@ -24,6 +25,7 @@
 </div>
 
     </form>
+        <a href="./index.php" class="btn btn-warning">Go back to the main page</a>
     
 </body>
 </html>
