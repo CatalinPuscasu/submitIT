@@ -20,17 +20,17 @@
     <h1 class="text-center">Use this form to submit your incident!</h1>
         
     <form action="">
-        <input class="form-control" type="text" value="Incident Number : INC<?php print rand(1, 1000000); ?>"  aria-label="readonly input example" readonly name="incNumber">
-        <div class="form-floating">
+        <input class="form-control mb-5" type="text" value="Incident Number : INC<?php print rand(1, 1000000); ?>"  aria-label="readonly input example" readonly name="incNumber">
+        <div class="form-floating mb-5">
   <input type="text" class="form-control" id="Username" placeholder="Username" value="<?php echo $_SESSION['username']; ?>">
   <label for="Username">Username</label>
 </div>
-        <div class="form-floating mb-3">
+        <div class="form-floating mb-5">
   <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
   <label for="floatingInput">Email address</label>
 </div>
-<div class="form-floating">
-  <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+<div class="form-floating mb-5">
+  <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="incident_type">
     <option selected>Select the type of incident : </option>
     <option value="app">Application</option>
     <option value="hardware">Hardware</option>
@@ -38,7 +38,13 @@
   </select>
   <label for="floatingSelect">Incident type</label>
 </div>
-<div class="mb-3">
+<!-- ---------------------------------------------------- -->
+<div class="form-control">
+  <label for="textarea">Please describe here with details your incident (e.g error message, when it started)</label>
+  <textarea class="form-control" aria-label="With textarea" id="textarea" cols="30" rows="10" name="incident_details"></textarea>
+</div>
+ <!-- -------------------------------------------------------------- -->
+<div class="mb-5">
   <label for="formFileMultiple" class="form-label">If you have attachments (emails, screenshots etc.) please insert them here</label>
   <input class="form-control" type="file" id="formFileMultiple" multiple>
 </div>
